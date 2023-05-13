@@ -19,7 +19,7 @@ commit;
 
 --as user
 create table LDI_t1(
-FR number(4) primary KEY,
+FR number(4) primary KEY,   
 SR varchar2(50)
 ) tablespace LDI_QDATA;
 commit;
@@ -27,9 +27,9 @@ commit;
 select * from C##LDILDI.ldi_t1;
 
 
-insert into LDI_t1 values(999,'asd');
-insert into LDI_t1 values(4,'lookatme!');
-insert into LDI_t1 values(11,'moonlight');
+insert into LDI_T1 values(999,'asd');
+insert into LDI_T1 values(4,'oq[keo[!');
+insert into LDI_T1 values(11,'asdsdadsa');
 
 select * from C##LDILDI.ldi_t1;
 commit;
@@ -84,13 +84,12 @@ select * from C##LDILDI.ldi_t1;
 alter table C##LDILDI.ldi_t1 modify fr number(5);
 
 begin
-for k in 1..10000
+for k in 3..10000
 loop
 insert into C##LDILDI.ldi_t1 values(k,'o');
 end loop;
 commit;
 end;
-
 
 --10
 select segment_name, segment_type, tablespace_name, bytes, blocks, extents, buffer_pool
@@ -103,7 +102,7 @@ select * from user_extents;
 --12
 select rowid, fr, sr from C##LDILDI.LDI_t1;
 
-select RowSCN, fr, sr from C##LDILDI.LDI_t1;
+select RowSCN, fr from C##LDILDI.ldi_t1;
 
 
 

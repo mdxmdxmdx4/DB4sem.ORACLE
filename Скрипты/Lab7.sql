@@ -54,6 +54,10 @@ CREATE TABLE TforLab72 (
 )
 CACHE;
 
+insert into TforLab72(id, name, date_created)
+values(1, 'AOIJSDA', TO_DATE('15.12.2023', 'DD.MM.YYYY'));
+COMMIT
+
 SELECT *
 FROM user_segments
 WHERE segment_type = 'TABLE' AND segment_name = 'TforLab72';

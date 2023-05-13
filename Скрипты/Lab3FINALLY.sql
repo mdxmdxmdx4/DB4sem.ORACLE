@@ -122,19 +122,19 @@ select * from sampleTest;
 --пользователь не может добавлять строки, т.к не прописано табличное пространство
 
 --as C## in PDB
+alter user C##LDILDI QUOTA 10m on USERS
+
 create table ASD(
 NUMSS number(3)
 )
-
-alter user C##LDILDI QUOTA 100m on LDI_PDB_TRUE
-
 commit;
 
 insert into ASD
 values(11);
+select * from ASD;
 
 
---as u1, c## in PDB
+
 select * from user_objects;
 
 

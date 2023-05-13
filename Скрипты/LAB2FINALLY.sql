@@ -60,7 +60,6 @@ grant RL_LDICORE to LDICORE;
 
 alter user LDICORE identified by 666666;
 
-
 create table LDI_T(
 SOMESTR varchar(10)
 )
@@ -80,8 +79,9 @@ insert into LDI_T values ('110');
 
 alter tablespace  ldildi online;
 
-insert into LDI_T values ('53');
+insert into LDI_T values ('23');
 
+select * from ldi_t;
 commit;
     
 
