@@ -73,7 +73,7 @@ INSERT INTO T_HASH (id, hash_key) VALUES (2,  'Key2');
 INSERT INTO T_HASH (id, hash_key) VALUES (3,  'Key3');
 COMMIT;
 
-select * from t_hash partition(sys_p421);
+select * from t_hash partition(sys_p422);
 
 SELECT table_name, partition_name, high_value
 FROM user_tab_partitions
