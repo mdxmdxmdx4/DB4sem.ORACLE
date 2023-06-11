@@ -1,5 +1,8 @@
 ALTER SESSION SET "_oracle_script" = TRUE
 
+select * from my_table;
+SELECT DEFAULT_TABLESPACE FROM USER_USERS;
+
 create tablespace ldildi
 datafile 'C:\ldildi.dbf'
 size 7 m
