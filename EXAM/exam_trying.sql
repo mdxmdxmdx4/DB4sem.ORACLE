@@ -174,8 +174,7 @@ select * from asd@topdb;
 
 
 --low level end
-select * from orders;
-select * from customers;
+
 
 --mid level
 --1
@@ -461,7 +460,11 @@ dbms_output.put_line('An error occurred: ' || SQLERRM); -- Вывод подро
 end;
 
 
-exec add_order(222000,to_date('2023.01.01','YYYY-MM-DD'), 2117, 101,'QSA','XK47',10,12);
+select * from products;
+
+exec add_order(222000,to_date('2023.01.01','YYYY-MM-DD'), 2117, 101,'QSA','41627',10,12);
+
+set serveroutput on;
 
 --insert into orders values(210000,to_date('2023.01.01','YYYY-MM-DD'), 2117, 101,'QSA','XK47',10,12391.12);
 
@@ -470,7 +473,7 @@ create or replace trigger insertation_order_check
 before insert on Orders
 for each row 
 declare
-v_product_qty number
+v_product_qty number;
 begin
  SELECT QTY_ON_HAND INTO v_product_qty
     FROM PRODUCTS
@@ -557,7 +560,7 @@ order by qty_on_hand desc;
 end;
 
 var res_list refcursor
-exec not_solded_product(2008,:res_list);
+exec not_solded_product(2023,:res_list);
 print res_list;
 
 
@@ -581,8 +584,6 @@ EXCEPTION
 DBMS_OUTPUT.PUT_LINE( 'Error: ' || SQLERRM);
 END;
 
-
-
 DECLARE
     v_order_count NUMBER;
 BEGIN
@@ -590,14 +591,13 @@ BEGIN
     dbms_output.put_line(v_order_count);
 END;
 
-
 --5
 create or replace procedure sort_table_data(
 p_column_name varchar2,
-p_sort_order varchar2,
-v_cursor out sys_refcursor
+p_sort_order varchar2
 )
 as
+v_cursor sys_refcursor;
 v_sql_query varchar2(100);
 v_mfr_id products.product_id%TYPE;
 v_product_id products.product_id%TYPE;
@@ -635,11 +635,16 @@ DBMS_OUTPUT.PUT_LINE(
 );
 END LOOP;
 
-
 CLOSE v_cursor;
 EXCEPTION
 WHEN OTHERS THEN
 DBMS_OUTPUT.PUT_LINE('Ошибка: ' || SQLERRM);
 END;
 
-exec sort_table_data('PRICE', 'DESC',:v_asd);
+exec sort_table_data('PRICE', 'DESC');
+
+
+commit;
+
+
+select * from my_table;
